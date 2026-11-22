@@ -3,7 +3,7 @@
 Paste a suspicious email. Get a verdict, the red flags behind it, defanged indicators and a
 ticket-ready note in seconds.
 
-**Live app:** LIVE_URL_PLACEHOLDER
+**Live app:** https://phishing-triage-assistant-vrnz-ruby.vercel.app
 **CI:** ![CI](https://github.com/pieropilato/phishing-triage-assistant/actions/workflows/ci.yml/badge.svg)
 
 ## The problem
@@ -90,7 +90,7 @@ key is set in Vercel under Project Settings -> Environment Variables.
 `POST /api/triage`
 
 ```bash
-curl -X POST https://YOUR-APP/api/triage \
+curl -X POST https://phishing-triage-assistant-vrnz-ruby.vercel.app/api/triage \
   -H "Content-Type: application/json" \
   -d '{"email":"From: IT Support <it@example.com>\nSubject: Verify your account\n\nPlease verify your account within 24 hours."}'
 ```
