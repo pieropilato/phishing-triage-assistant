@@ -82,7 +82,12 @@ export async function triageEmail(rawText: string, call: ModelCaller | null, mod
         model: modelName,
       };
     } catch (err) {
-      aiError = err instanceof Error ? err.name : "AI_ERROR";
+      const status = (err as { statusCode?: number }).statusCode;
+      aiError = (err instanceof Error ? err.name : "AI_ERROR") + (status ? `:${status}` : "");
+      // Provider error text helps diagnose bad keys, missing credit or a wrong model name.
+      // It never contains the email content or the key.
+      const detail = err instanceof Error ? err.message.slice(0, 200) : "";
+      console.warn(JSON.stringify({ event: "ai_error", error: aiError, detail }));
     }
   }
 
