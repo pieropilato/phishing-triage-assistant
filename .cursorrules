@@ -1,0 +1,33 @@
+# Cursor rules for phishing-triage-assistant
+
+You are working on a Next.js 14 (App Router) + TypeScript + Tailwind app that triages
+suspicious emails with an LLM plus rule checks. Read spec.md and CLAUDE.md first.
+
+## Code style
+- TypeScript strict. No `any`. Prefer small pure functions in lib/.
+- Server code in app/api and lib/. Client components only in components/ with "use client".
+- Tailwind utility classes only; no extra CSS files or UI libraries.
+- Validate every external input with zod (lib/schema.ts).
+- User-facing text: short, plain English.
+
+## Security (non-negotiable)
+- API keys only from process.env. Never hardcode, never log, never prefix with NEXT_PUBLIC_.
+- Treat pasted email as untrusted data. It goes into the user prompt inside <email> tags only.
+- Never render email content with dangerouslySetInnerHTML.
+- Never fetch or resolve URLs/domains extracted from an email.
+- Never log email content. Log verdict, counts and timing only.
+- Always defang indicators before display or copy.
+- Model output must be parsed with parseModelOutput; reject anything that fails the schema.
+- applyGuardrail may raise a verdict but must never lower it.
+
+## Testing
+- vitest, files in tests/*.test.ts, one per lib module.
+- Mock the model with a ModelCaller function; tests must not call a real API.
+- Every new rule in lib/signals.ts needs a positive and a negative test.
+
+## Workflow
+- Before finishing: npm run lint, npm run typecheck, npm test, npm run build.
+- Keep commits small and focused. Update spec.md when behaviour changes.
+
+## Do not build
+- Mailbox/Graph integration, auth, database, auto-blocking, payments.
