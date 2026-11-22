@@ -33,26 +33,21 @@ environment settings meant the repository could be public from the first commit.
 
 ## Challenges
 
-- **Structured output.** Models sometimes wrap JSON in prose or code fences. I solved it with a
-  tolerant extractor, strict schema validation, one retry, and a rules-only fallback.
-- **Dependency versions.** The newest TypeScript major broke the framework's CSS import typing. Pinning
-  the version the framework expects fixed it. Lesson: check compatibility before taking "latest".
-- **Look-alike detection.** The digit 1 can stand for "l" (paypa1) or "i" (m1crosoft). The first rule
-  handled only one case; a failing test exposed it.
-- **Scope pressure.** Reputation lookups and mailbox integration were tempting, but each adds keys,
-  privacy questions and failure modes. Cutting them kept the MVP finishable and testable.
+- **Structured output.** Models sometimes wrap JSON in prose. A tolerant parser, strict schema
+  validation, one retry and a rules-only fallback solved it.
+- **Dependency versions.** The newest TypeScript major broke the framework's CSS typing; pinning the
+  supported version fixed it.
+- **Look-alike detection.** The digit 1 can stand for "l" (paypa1) or "i" (m1crosoft). A failing test
+  exposed that the first rule handled only one case.
+- **Scope pressure.** Reputation lookups and mailbox integration were tempting but would have added
+  keys, privacy questions and failure modes. Cutting them kept the MVP finishable.
 
 ## What I would improve in v2
 
-1. **URL and domain reputation** (for example urlscan.io or VirusTotal) to back the verdict with
-   external evidence. This is logged as a GitHub issue.
-2. **Redaction of personal data** before the email goes to the AI provider.
-3. **A labelled evaluation set** (50-100 emails) run in CI to track accuracy over time.
-4. **Shared rate limiting** with a small key-value store instead of in-memory counters.
-5. **Mailbox integration** so reports arrive automatically instead of by copy and paste.
+URL and domain reputation lookups (logged as GitHub issue #1), redaction of personal data before the
+AI call, a labelled test set run in CI to track accuracy, and shared rate limiting.
 
 ## Takeaway
 
-The value was not in asking a model "is this phishing?". It came from the work around the model:
-choosing a narrow user, writing a testable spec, extracting facts with code, and putting a guardrail
-and tests around the AI. That is the part I will reuse in my own security operations work.
+The value was not in asking a model "is this phishing?". It came from the work around it: a narrow
+user, a testable spec, facts extracted by code, and a guardrail and tests around the AI.
