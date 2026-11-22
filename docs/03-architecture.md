@@ -58,7 +58,7 @@ flowchart LR
 | Never fetch links | Safe for the analyst, no outbound traffic to attacker infrastructure, no SSRF risk. |
 | No storage | Reported emails often contain personal data. Keeping nothing is the simplest privacy position. |
 | Provider behind one function (`ModelCaller`) | The provider can be swapped with an environment variable, and tests run with a mock, so CI needs no key. |
-| Small, fast model (`claude-haiku-5-5`), temperature 0 | Classification task; low cost and latency; stable answers. |
+| Small, fast model (`claude-haiku-5-5`) | Classification task; low cost and latency. Temperature 0 is used where the provider supports it. |
 
 ## Security
 

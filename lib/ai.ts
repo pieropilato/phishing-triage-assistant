@@ -106,7 +106,8 @@ export function createModelCaller(cfg: AiConfig): ModelCaller {
       model: getModel(cfg),
       system,
       prompt,
-      temperature: 0,
+      // Newer Claude models reject the temperature setting; keep it only for other providers.
+      ...(cfg.provider === "anthropic" ? {} : { temperature: 0 }),
       maxOutputTokens: 900,
       maxRetries: 1,
       abortSignal: AbortSignal.timeout(25_000),

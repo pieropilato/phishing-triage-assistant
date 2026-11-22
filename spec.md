@@ -67,7 +67,7 @@ An AI failure is **not** an error: the response is 200 with `aiUsed: false` and 
 
 **Pipeline:** parse headers -> extract indicators -> rule signals -> model -> schema check -> guardrail.
 
-**Model:** `claude-haiku-5-5` through the Vercel AI SDK; temperature 0; max 900 output tokens; 25 s
+**Model:** `claude-haiku-5-5` through the Vercel AI SDK (temperature 0 for providers that support it); max 900 output tokens; 25 s
 timeout; 1 SDK retry.
 
 **System prompt (summary):** role of a SOC analyst; definitions of the four verdicts; the email is
