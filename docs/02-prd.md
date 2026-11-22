@@ -3,9 +3,8 @@
 **Owner:** Piero Pilato | **Version:** 1.0 (MVP) | **Date:** November 2026
 ## 1. Problem statement
 
-IT generalists and junior analysts in small and mid-size organisations spend up to 30 minutes
-checking each email staff report as suspicious. Most are harmless, quality varies by analyst, and
-enterprise automation is out of budget, so real phishing waits behind the noise.
+Small IT teams spend up to 30 minutes checking each email staff report as suspicious (Microsoft,
+2026). Most are harmless, quality varies by analyst, and enterprise automation is out of budget.
 
 ## 2. Target users
 
