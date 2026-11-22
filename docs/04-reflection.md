@@ -4,9 +4,8 @@
 
 ## What I built
 
-A web app where an analyst pastes a reported email and gets a verdict, the red flags behind it,
-defanged indicators and a ticket-ready note. It combines code-based checks with a language model and
-uses a guardrail so the model cannot call an email safe when hard evidence says otherwise.
+A web app that turns a pasted email into a verdict, evidence, defanged indicators and a ticket note,
+combining code-based checks with a language model behind a guardrail.
 
 ## Key learnings
 
@@ -35,8 +34,6 @@ environment settings meant the repository could be public from the first commit.
 
 - **Structured output.** Models sometimes wrap JSON in prose. A tolerant parser, strict schema
   validation, one retry and a rules-only fallback solved it.
-- **Dependency versions.** The newest TypeScript major broke the framework's CSS typing; pinning the
-  supported version fixed it.
 - **Look-alike detection.** The digit 1 can stand for "l" (paypa1) or "i" (m1crosoft). A failing test
   exposed that the first rule handled only one case.
 - **Scope pressure.** Reputation lookups and mailbox integration were tempting but would have added
@@ -47,7 +44,5 @@ environment settings meant the repository could be public from the first commit.
 URL and domain reputation lookups (logged as GitHub issue #1), redaction of personal data before the
 AI call, a labelled test set run in CI to track accuracy, and shared rate limiting.
 
-## Takeaway
-
-The value was not in asking a model "is this phishing?". It came from the work around it: a narrow
+**Takeaway:** the value was not in asking a model "is this phishing?". It came from the work around it: a narrow
 user, a testable spec, facts extracted by code, and a guardrail and tests around the AI.
