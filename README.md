@@ -4,6 +4,7 @@ Paste a suspicious email. Get a verdict, the red flags behind it, defanged indic
 ticket-ready note in seconds.
 
 **Live app:** https://phishing-triage-assistant-vrnz-ruby.vercel.app
+**Demo video (2 min):** https://1drv.ms/v/c/759ad7aed0fdd9d6/IQBSoHuux1a4QoZ8PjqRu08DAeyd1rMEn3F6ixhvkNoo8p8?e=fMm2ja
 **CI:** ![CI](https://github.com/pieropilato/phishing-triage-assistant/actions/workflows/ci.yml/badge.svg)
 
 ## The problem
